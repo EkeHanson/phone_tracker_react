@@ -1,0 +1,131 @@
+/* UserManagement.css */
+.user-management {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin: auto;
+}
+
+/* Search bar styles */
+.search-bar {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1; /* Allow input to grow */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    min-width: 200px; /* Minimum width for input */
+}
+
+.search-bar button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    color: white;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* User table styles */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto; /* Allow horizontal scroll on small screens */
+}
+
+.user-table th,
+.user-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Button spacing */
+.user-table td button {
+    margin-right: 10px; /* Add space between buttons */
+}
+
+/* Status styles */
+.status-active {
+    color: green;
+}
+
+.status-inactive {
+    color: red;
+}
+
+/* Button styles */
+.btn-danger {
+    background-color: red; /* Red for delete and active user deactivation */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+.btn-warning {
+    background-color: orange; /* Warning color for edit button */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-warning:hover {
+    background-color: darkorange; /* Darker orange on hover */
+}
+
+.btn-success {
+    background-color: green; /* Green for activate user */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-success:hover {
+    background-color: darkgreen; /* Darker green on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .search-bar input {
+        margin-bottom: 10px; /* Space between input and button */
+    }
+
+    .user-table {
+        display: block; /* Make the table block for scrolling */
+        overflow-x: auto; /* Enable horizontal scroll */
+        white-space: nowrap; /* Prevent wrapping of table cells */
+    }
+
+    .user-table th,
+    .user-table td {
+        font-size: 14px; /* Reduce font size on small screens */
+    }
+
+    .user-table td button {
+        margin-bottom: 5px; /* Space between buttons in a vertical layout */
+        display: block; /* Stack buttons vertically */
+        width: 100%; /* Make buttons full width */
+    }
+}

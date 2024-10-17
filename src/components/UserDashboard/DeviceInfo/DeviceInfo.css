@@ -1,0 +1,63 @@
+.device-info {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Spacing around content */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 400px; /* Max width for the component */
+  margin: 15px auto; /* Center the component */
+}
+
+.device-title {
+  font-size: 1.5rem; /* Larger title font size */
+  color: #333; /* Darker color for the title */
+  margin-bottom: 15px; /* Space below the title */
+}
+
+.device-grid {
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 10px; /* Space between grid items */
+}
+
+.device-item {
+  background-color: #fff; /* White background for each item */
+  padding: 10px; /* Padding around content */
+  border: 1px solid #e0e0e0; /* Light border for items */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-size: 0.9rem; /* Regular font size */
+  color: #555; /* Medium gray color for text */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .device-info {
+    padding: 15px; /* Adjust padding for smaller screens */
+    max-width: 100%; /* Make the container full width on smaller screens */
+    margin: 10px auto;
+  }
+
+  .device-title {
+    font-size: 1.2rem; /* Adjust title size for smaller screens */
+  }
+
+  .device-item {
+    font-size: 0.8rem; /* Adjust text size for smaller screens */
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .device-info {
+    padding: 20px; /* Standard padding for tablets */
+    max-width: 80%; /* Slightly wider on medium screens */
+  }
+
+  .device-title {
+    font-size: 1.3rem; /* Adjust title size for medium screens */
+  }
+
+  .device-item {
+    font-size: 0.9rem; /* Regular font size for medium screens */
+  }
+}

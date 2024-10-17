@@ -1,0 +1,122 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Dark background for better contrast */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #2c2c2c; /* Dark background for the modal */
+  color: #ffffff; /* White text for better readability */
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+h2, h3 {
+  margin-bottom: 15px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #444; /* Darker border for better visibility */
+  border-radius: 5px;
+  background: #3a3a3a; /* Dark background for input fields */
+  color: #fff; /* White text for input fields */
+}
+
+.contact-form button {
+  padding: 10px;
+  background: #007bff; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background: #0056b3; /* Darker shade on hover */
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #444; /* Darker border for contact items */
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-button {
+  background: red; /* Red for delete button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background 0.3s;
+}
+
+.delete-button:hover {
+  background: darkred; /* Darker shade on hover */
+}
+
+.location-sharing {
+  margin-top: 20px;
+}
+
+.info-text {
+  font-size: 0.9em;
+  color: #ccc; /* Lighter gray for info text */
+}
+
+.close-button {
+  margin-top: 20px;
+  background: gray; /* Gray for close button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.close-button:hover {
+  background: darkgray; /* Darker shade on hover */
+}
+
+/* Responsive styling */
+@media (max-width: 500px) {
+  .modal-content {
+    width: 95%; /* Slightly increase width on smaller screens */
+  }
+
+  .contact-form input, .contact-form button, .delete-button, .close-button {
+    padding: 12px; /* Increased padding for better touch targets */
+  }
+}

@@ -1,0 +1,75 @@
+/* Main container for GeoFence */
+.geo-fence-container {
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 450px;
+    margin: 0 auto; /* Center the component */
+    text-align: center;
+  }
+  
+  /* Title styling */
+  .geo-fence-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Input wrapper to align input and button */
+  .geo-fence-input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Space between input and button */
+    align-items: center;
+  }
+  
+  /* Input styling */
+  .geo-fence-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Focus effect for input */
+  .geo-fence-input:focus {
+    border-color: #007bff;
+  }
+  
+  /* Button styling */
+  .geo-fence-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Button hover effect */
+  .geo-fence-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: #d9534f; /* Bootstrap's danger red */
+    margin-top: 10px;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 600px) {
+    .geo-fence-input-wrapper {
+      flex-direction: column;
+    }
+  
+    .geo-fence-button {
+      width: 100%; /* Full width button on smaller screens */
+    }
+  }
+  

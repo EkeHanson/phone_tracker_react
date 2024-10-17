@@ -1,0 +1,69 @@
+.advertisement {
+  width: 100%;
+  max-width: 400px; /* Limit width to ensure responsiveness */
+  height: auto;
+  background-color: #ffffff; /* White background for clean look */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow: hidden; /* Ensure content stays within boundaries */
+  transition: transform 0.3s ease; /* Animation on hover */
+  cursor: pointer;
+}
+
+.advertisement:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.ad-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.ad-image {
+  width: 20%;
+  height: auto;
+  object-fit: cover; /* Ensure image fits nicely */
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ad-text {
+  text-align: center;
+  padding: 15px;
+}
+
+.ad-headline {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ad-description {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.ad-cta-button {
+  padding: 10px 20px;
+  background-color: #f39c12; /* Eye-catching button color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.ad-cta-button:hover {
+  background-color: #e67e22; /* Darken button on hover */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .advertisement {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+}

@@ -1,0 +1,130 @@
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background-color: #143453; /* Dark background */
+  color: #fff; /* White text */
+  padding: 40px;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+}
+
+/* Dashboard Actions */
+.dashboard-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px 0; /* Margin on the top and bottom */
+  padding-bottom: 20px; /* Add padding below to separate from other components */
+}
+
+.dashboard-btn {
+  padding: 15px 30px;
+  background-color: #007bff; /* Blue button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Button hover effect */
+.dashboard-btn:hover {
+  background-color: #0056b3; /* Darker blue */
+  transform: scale(1.05);
+}
+
+/* Section Container (Device Registration & Registered Devices) */
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #292929; /* Dark gray */
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(73, 63, 63, 0.3);
+  overflow: auto; /* Scroll within the section if content is too large */
+}
+
+/* Flex container for Advertisement and DeviceRegistration */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.flex-container > * {
+  flex: 1;
+}
+
+/* Ensure that the section container doesn't overflow the page */
+.section-container {
+  max-height: 100%; /* Ensure the section container doesn't exceed the view height */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .flex-container {
+    flex-direction: column; /* Stack Advertisement and DeviceRegistration vertically */
+    align-items: center;
+  }
+
+  .flex-container > * {
+    width: 100%; /* Full width for smaller screens */
+    margin-bottom: 20px; /* Add space between items */
+  }
+
+  .dashboard-actions {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons */
+    padding-bottom: 10px; /* Padding below for smaller screens */
+  }
+
+  .dashboard-btn {
+    width: 90%; /* Full width on smaller screens */
+    margin-bottom: 10px; /* Space between buttons */
+  }
+
+  .section-container {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .dashboard-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-actions {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons */
+  }
+
+  .dashboard-btn {
+    width: 100%; /* Full width for very small screens */
+  }
+
+  .section-container {
+    padding: 15px;
+  }
+
+  .flex-container {
+    gap: 10px; /* Smaller gap for mobile screens */
+  }
+}

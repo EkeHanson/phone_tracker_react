@@ -1,0 +1,66 @@
+/* src/components/ErrorPage.css */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    background-color: #f0f0f0; /* Light background */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .error-page h1 {
+    font-size: 5rem;
+    color: #ff4040;
+    margin-bottom: 20px;
+  }
+  
+  .error-page p {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .home-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-link:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .error-page h1 {
+      font-size: 3rem; /* Reduce font size on small screens */
+    }
+  
+    .error-page p {
+      font-size: 1.2rem; /* Adjust text size on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .error-page h1 {
+      font-size: 2rem; /* Further reduce heading size for very small screens */
+    }
+  
+    .error-page p {
+      font-size: 1rem; /* Further adjust paragraph size */
+    }
+  
+    .home-link {
+      padding: 8px 15px; /* Adjust button size */
+    }
+  }
+  

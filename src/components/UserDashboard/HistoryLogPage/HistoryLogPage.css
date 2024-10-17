@@ -1,0 +1,182 @@
+Set the background of the entire page to cyan
+body {
+    background-color: rgb(41, 94, 94);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow-x: hidden; /* To prevent horizontal scroll on small screens */
+  }
+  
+  /* History Log Container */
+  .history-log-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+  
+  /* Color strips */
+  .color-strips .strip {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 40px;
+    z-index: 0;
+    opacity: 0.85;
+    border-radius: 0 100px 100px 0;
+  }
+  
+  /* Define multiple strips with different colors and spacing */
+  .strip-1 { right: 60px; background: linear-gradient(45deg, #ffd93d, #ffc93d, #ffd93d); }
+  .strip-2 { right: 120px; background: linear-gradient(45deg, #6bc1ff, #6baeff, #6bc1ff); }
+  .strip-3 { right: 180px; background: linear-gradient(45deg, #ff6b6b, #ffb86b, #ff6b6b); }
+  .strip-4 { right: 240px; background: linear-gradient(45deg, #f0c27b, #4b1248); }
+  .strip-5 { right: 300px; background: linear-gradient(45deg, #ffdd57, #ff4e50); }
+  .strip-6 { right: 360px; background: linear-gradient(45deg, #00c6ff, #0072ff); }
+  .strip-7 { right: 420px; background: linear-gradient(45deg, #8e44ad, #2980b9); }
+  
+  /* Date filter styling */
+  .date-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .date-filter input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Timeline styling */
+  .timeline {
+    margin-top: 20px;
+    position: relative;
+    padding: 20px 0;
+  }
+  
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #007bff;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .timeline-content {
+    text-align: left;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    flex-grow: 1;
+  }
+  
+  /* Export Section */
+  .export-section {
+    margin-top: 20px;
+  }
+  
+  .export-section button {
+    margin: 0 10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .history-log-container {
+      max-width: 90%;
+      padding: 15px;
+    }
+  
+    .color-strips .strip {
+      width: 30px;
+      right: auto;
+    }
+  
+    .timeline-content {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.25rem;
+    }
+  
+    .timeline-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .timeline-dot {
+      margin-bottom: 10px;
+    }
+  
+    .date-filter {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .history-log-container {
+      padding: 10px;
+    }
+  
+    button {
+      padding: 8px 16px;
+    }
+  
+    .export-section button {
+      margin: 5px 0;
+    }
+  }
+  .back-button {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #c02419; /* Red color for back button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: #d32f2f;
+  }
+  

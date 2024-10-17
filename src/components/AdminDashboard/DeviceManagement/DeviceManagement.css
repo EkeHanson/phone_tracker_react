@@ -1,0 +1,125 @@
+.device-management {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin: auto;
+}
+
+/* Search bar styles */
+.search-bar {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1; /* Allow input to grow */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    min-width: 200px; /* Minimum width for input */
+}
+
+.search-bar button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    color: white;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* Device table styles */
+.device-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto; /* Allow horizontal scroll on small screens */
+}
+
+.device-table th,
+.device-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Button spacing */
+.device-table td button {
+    margin-right: 10px; /* Add space between buttons */
+}
+
+/* Status styles */
+.status-online {
+    color: green;
+}
+
+.status-offline {
+    color: red;
+}
+
+/* Button styles */
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .search-bar input {
+        margin-bottom: 10px; /* Space below input */
+    }
+
+    .device-table {
+        font-size: 14px; /* Reduce font size */
+    }
+
+    .device-table th,
+    .device-table td {
+        padding: 8px; /* Adjust padding for smaller screens */
+    }
+
+    .device-table th {
+        font-size: 16px; /* Slightly larger font for headers */
+    }
+
+    .btn-info, .btn-warning {
+        width: auto; /* Adjust button width */
+        margin-bottom: 5px; /* Space between buttons */
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px; /* Smaller title on very small screens */
+    }
+
+    .device-table {
+        font-size: 12px; /* Further reduce font size */
+    }
+
+    .device-table th,
+    .device-table td {
+        padding: 5px; /* Further adjust padding */
+    }
+}

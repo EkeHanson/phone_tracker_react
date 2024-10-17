@@ -1,0 +1,292 @@
+/* General Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light background for better readability */
+}
+
+/* Contact Us Page */
+.contact-us {
+    max-width: 600px; /* Set a maximum width for larger screens */
+    margin: 20px auto; /* Center the content */
+    padding: 20px;
+    background-color: #fff; /* White background for the form and info */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Header */
+h1 {
+    text-align: center; /* Center the title */
+    color: #333; /* Darker text for contrast */
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
+    gap: 15px; /* Space between form elements */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 4px; /* Slightly rounded corners */
+    width: 100%; /* Full width of the parent */
+    box-sizing: border-box; /* Include padding and border in width */
+    transition: border-color 0.3s; /* Smooth transition for focus effect */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #007BFF; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+textarea {
+    min-height: 100px; /* Minimum height for the message field */
+}
+
+/* Submit Button */
+button {
+    background-color: #007BFF; /* Primary color for button */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding around the button */
+    border-radius: 4px; /* Rounded corners for button */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Confirmation Message */
+.confirmation-message {
+    background-color: #e7f3fe; /* Light blue background */
+    border: 1px solid #b3d4fc; /* Border color matching the background */
+    color: #31708f; /* Dark blue text */
+    padding: 15px;
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below the message */
+}
+
+/* Contact Info */
+.contact-info {
+    margin-top: 40px; /* Space above the contact info */
+}
+
+.contact-info h2 {
+    margin-top: 30px; /* Space above section headers */
+    color: #007BFF; /* Primary color for headings */
+}
+
+.contact-info p {
+    margin: 5px 0; /* Space between paragraphs */
+}
+
+/* Social Media Links */
+.social-media-links {
+    display: flex; /* Use flexbox for social media links */
+    gap: 10px; /* Space between icons */
+}
+
+.social-media-links img {
+    width: 24px; /* Size of the social media icons */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Map Container */
+.map-container {
+    margin-top: 20px; /* Space above the map */
+    height: 300px; /* Fixed height for the map */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-form {
+        flex-direction: column; /* Stack elements vertically on small screens */
+    }
+}
+
+
+.footer {
+    padding: 20px;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+  }
+  
+  .footer {
+    background-color: #343a40;
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .footer-section {
+    margin: 10px 20px;
+    flex: 1;
+  }
+  
+  .footer-logo {
+    max-width: 80px;
+    margin-bottom: 15px;
+  }
+  
+  .footer-section h3 {
+    color: #fff;
+    margin-bottom: 15px;
+  }
+  
+  .footer-section p, 
+  .footer-section ul {
+    color: #adb5bd;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin: 10px 0;
+  }
+  
+  .footer-section ul li a {
+    color: #adb5bd;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  
+  .social-icons a {
+    margin: 0 10px;
+    color: #adb5bd;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #007bff;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #495057;
+    font-size: 0.9em;
+  }
+  
+  /* New styles for the Partners section */
+  .partners-section {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .partners-section h3 {
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .partners-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .partners-logos img {
+    max-width: 60px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s;
+  }
+  
+  .partners-logos img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* LandingPage.css */
+  
+  /* General styles for smaller screens */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .hero-section {
+      flex-direction: column;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .hero-content {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .features-container,
+    .steps-container,
+    .pricing-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .feature,
+    .step,
+    .pricing-card {
+      width: 90%; /* Full width on smaller screens */
+      margin: 10px 0; /* Margin between cards */
+    }
+  
+    .footer-content {
+      flex-direction: column; /* Stack footer sections vertically */
+      align-items: center;
+    }
+  
+    .footer-section {
+      margin: 10px 0;
+      text-align: center; /* Center text in footer */
+    }
+  
+    .partners-logos {
+      flex-wrap: wrap; /* Allow wrapping for partner logos */
+    }
+  
+    .partners-logos img {
+      max-width: 50px; /* Smaller logos on mobile */
+    }
+  }
+  
+  /* Adjustments for extra small screens */
+  @media (max-width: 480px) {
+    .cta-button {
+      width: 100%; /* Full-width buttons */
+      padding: 15px; /* Increase padding for better touch targets */
+    }
+  
+    .navbar a {
+      margin: 10px 0; /* Stack navbar links */
+    }
+  }
+  
