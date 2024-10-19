@@ -31,18 +31,18 @@ const Registration = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       setLoading(true);
-  
+    
       // Validate the register form
       if (!isLogin && formData.password !== formData.confirmPassword) {
         setErrorMessage('Passwords do not match');
         setLoading(false);
         return;
       }
-  
+    
       const url = isLogin
         ? `${djangoHostname}/api/users/login/`
         : `${djangoHostname}/api/users/register/`;
-  
+    
       const data = isLogin
         ? { email: formData.email, password: formData.password }
         : {
@@ -50,14 +50,23 @@ const Registration = () => {
             last_name: formData.last_name,
             phone: formData.phone,
             email: formData.email,
-            password: formData.password
+            password: formData.password,
           };
-  
+    
       try {
         const response = await axios.post(url, data);
-        console.log('Success:', response.data);
-  
+        // console.log('Success:', response.data);
+    
         if (isLogin) {
+          // Store the response data in local storage
+          localStorage.setItem('user_id', response.data.userId);
+          localStorage.setItem('user_email', response.data.email);
+          localStorage.setItem('user_phone', response.data.phone);
+          localStorage.setItem('user_first_name', response.data.first_name);
+          localStorage.setItem('user_last_name', response.data.last_name);
+          localStorage.setItem('user_user_type', response.data.user_type);
+          localStorage.setItem('access_token', response.data.access);
+    
           // Redirect to home page after login
           navigate('/users-dashboard');
         } else {
@@ -69,6 +78,7 @@ const Registration = () => {
       }
       setLoading(false);
     };
+    
   
   return (
     <div className="auth-page">

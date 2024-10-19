@@ -16,6 +16,8 @@ const Dashboard = () => {
     setActiveComponent(component);
   };
 
+
+
   return (
     <div>
       <NavBar />

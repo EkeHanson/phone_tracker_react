@@ -1,32 +1,61 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; 
 import './RegisteredDevices.css';
 
+// Utility function to format the date
+const formatDate = (isoDateString) => {
+  const date = new Date(isoDateString);
+  return date.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  });
+};
+
 const RegisteredDevices = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
-  // Sample data to represent devices
-  const devices = [
-    { id: 1, name: 'iPhone', location: 'New York', status: 'Active' },
-    { id: 2, name: 'Tesla', location: 'New York', status: 'Active' },
-    { id: 3, name: 'Samsung Galaxy', location: 'San Francisco', status: 'Inactive' },
-    { id: 4, name: 'Xiaomi Galaxy', location: 'Nigeria', status: 'Inactive' },
-    { id: 5, name: 'Google Pixel', location: 'California', status: 'Active' },
-    { id: 6, name: 'OnePlus', location: 'Boston', status: 'Active' },
-    { id: 7, name: 'iPad', location: 'London', status: 'Inactive' }
-  ];
+  const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
+  const navigate = useNavigate();
+  const [devices, setDevices] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
+  const [currentPage, setCurrentPage] = useState(1); 
+  const itemsPerPage = 3; 
 
-  const itemsPerPage = 3; // Number of items per page
-  const [currentPage, setCurrentPage] = useState(1); // Page state
+  useEffect(() => {
+    // Function to fetch device data from API
+    const fetchDevices = async () => {
+      try {
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) {
+          throw new Error('No access token found.');
+        }
 
-  // Calculate the total number of pages
+        const response = await axios.get(`${djangoHostname}/api/devices/user-devices/`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        });
+
+        setDevices(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchDevices();
+  }, []);
+
   const totalPages = Math.ceil(devices.length / itemsPerPage);
-
-  // Calculate the indices of the devices to display on the current page
   const indexOfLastDevice = currentPage * itemsPerPage;
   const indexOfFirstDevice = indexOfLastDevice - itemsPerPage;
   const currentDevices = devices.slice(indexOfFirstDevice, indexOfLastDevice);
 
-  // Handle navigation
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
@@ -39,10 +68,17 @@ const RegisteredDevices = () => {
     }
   };
 
-  // Function to handle track button click
   const handleTrackClick = () => {
-    navigate('/users-track'); // Navigate to the /users-track route
+    navigate('/users-track');
   };
+
+  if (loading) {
+    return <p>Loading devices...</p>;
+  }
+
+  if (error) {
+    return <p>Error fetching devices: {error}</p>;
+  }
 
   return (
     <div className="registered-devices">
@@ -51,14 +87,14 @@ const RegisteredDevices = () => {
         {currentDevices.map((device) => (
           <div className="device-card" key={device.id}>
             <h3>{device.name}</h3>
-            <p>Last Location: {device.location}</p>
-            <p>Status: {device.status}</p>
-            <button onClick={handleTrackClick}>Track Now</button> {/* Add onClick handler */}
+            <p>Registration Date: {formatDate(device.registration_date)}</p> {/* Formatted date */}
+            <p>Imei1 Number: {device.imei1}</p>
+            <p>Imei2 Number: {device.imei2}</p>
+            <button onClick={handleTrackClick}>Track Now</button>
           </div>
         ))}
       </div>
 
-      {/* Navigation Buttons */}
       <div className="pagination-controls">
         <button
           className="pagination-btn"

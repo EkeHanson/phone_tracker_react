@@ -19,10 +19,10 @@ const DeviceRegistration = () => {
     setLoading(true);
     setError(null);
     setSuccess(null);
-
+  
     // Create FormData to handle file uploads
     const deviceData = new FormData();
-    deviceData.append('user', "ekenehanson@gmail.com");
+    deviceData.append('user', localStorage.getItem('user_id')); // Ensure this user_id exists
     deviceData.append('name', name);
     deviceData.append('imei1', imei1);
     deviceData.append('imei2', imei2);
@@ -32,27 +32,30 @@ const DeviceRegistration = () => {
     if (image2) {
       deviceData.append('image2', image2); // Add the second image to FormData
     }
-
+  
     try {
-      const response = await axios.post(`${djangoHostname}api/devices/devices`, deviceData, {
+      const response = await axios.post(`${djangoHostname}/api/devices/devices/`, deviceData, {
         headers: {
-          'Content-Type': 'multipart/form-data', // Set content type for FormData
+          'Content-Type': 'multipart/form-data',
+          // Include Authorization token if needed
+          'Authorization': `Bearer ${localStorage.getItem('access_token')}`, // Example for JWT token
         },
       });
+      
       setSuccess('Device registered successfully!');
       // Reset the form fields
       setName('');
       setImei1('');
       setImei2('');
-      setImage1(null); // Reset image1
-      setImage2(null); // Reset image2
+      setImage1(null);
+      setImage2(null);
     } catch (err) {
       setError('Error registering device. Please try again.');
     } finally {
       setLoading(false);
     }
   };
-
+  
   return (
     <div className="device-registration">
       <h2>Add New Device</h2>
