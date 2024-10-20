@@ -18,6 +18,9 @@ const NavBar = () => {
   const handleHowItWorksClick = () => {
     navigate('/');
   };
+  const handleFeaturesClick = () => {
+    navigate('/');
+  };
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
@@ -37,7 +40,7 @@ const NavBar = () => {
 
         {/* Navigation Links */}
         <nav className={menuActive ? 'nav-menu active' : 'nav-menu'}>
-          <a href="#features" onClick={closeMenu} className="nav-link">
+          <a href="#features" onClick={handleFeaturesClick} className="nav-link">
             <FaStar className="nav-icon" /> Features
           </a>
           <a href="#how-it-works" onClick={handleHowItWorksClick} className="nav-link">
@@ -57,7 +60,7 @@ const NavBar = () => {
           {/* Account and Social Icons */}
           <div className="nav-icons">
             <FaUserCircle className="nav-icon" title="Account" onClick={() => navigate('/users-dashboard')} />
-            <FaQuestionCircle className="nav-icon" /> Help
+            <FaQuestionCircle className="nav-icon" title="Account" onClick={() => navigate('/faq-us')}/> Help
           </div>
         </nav>
 

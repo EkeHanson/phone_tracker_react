@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NavBar from '../NavBar/NavBar'; // Import the NavBar component
 import "./FAQ.css"; 
 import Footer from '../Footer/Footer';
 
@@ -115,6 +116,7 @@ const FAQ = () => {
 
   return (
     <div>
+      <NavBar /> {/* Use NavBar here */}
       <div className="faq-container">
         <h1 className="faq-title">Frequently Asked Questions</h1>
         <div className="faq-list">

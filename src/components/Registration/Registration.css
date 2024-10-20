@@ -107,3 +107,15 @@
     margin-bottom: 10px;
   }
 }
+
+
+.logo {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.logo-image {
+  max-width: 70px !important;
+  height: auto;
+}

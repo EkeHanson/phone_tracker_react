@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate to handle redirection
+import logo1 from '../../assets/power.png';
 import './Registration.css';
 
 
@@ -87,7 +88,10 @@ const Registration = () => {
   return (
     <div className="auth-page">
       <div className="auth-container">
-
+        {/* Logo Section */}
+        <div className="logo" onClick={() => navigate('/')}>
+          <img src={logo1} alt="PhoneTracker Logo" className="logo-image" />
+        </div>
         <div className="social-login">
           <p>{isLogin ? 'login' : 'register'} with</p>
           <button className="google-login">Google</button>

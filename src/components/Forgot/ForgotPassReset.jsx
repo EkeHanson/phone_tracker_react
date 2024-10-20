@@ -5,7 +5,7 @@ import GlobeIcon from '../../assets/globe-icon.svg';
 import {useNavigate } from 'react-router-dom';
 
 const ForgotPass = () => {
-  const API_HOST = process.env.REACT_APP_API_HOST;
+  const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
   const { uid, token } = useParams(); // Extract uid and token from URL
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -67,7 +67,7 @@ const ForgotPass = () => {
           <div className='Top_Nav_l_main'>
             <ul className='Rr_Nav_Ul'>
               <li>
-                <Link to='/login' className='signup_btn'>Login</Link>
+                <Link to='/register' className='signup_btn'>Login</Link>
               </li>
             </ul>
             <div className='Rr_Sec_D'>

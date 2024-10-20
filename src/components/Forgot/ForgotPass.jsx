@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ForgotPassReset.css';
@@ -19,7 +18,7 @@ const ForgotPass = () => {
     setSuccessMessage('');
 
     try {
-      const response = await fetch(`${djangoHostname}api/register/password-reset/`, {
+      const response = await fetch(`${djangoHostname}/api/users/password-reset/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +48,7 @@ const ForgotPass = () => {
           <div className='Top_Nav_l_main'>
             <ul className='Rr_Nav_Ul'>
               <li>
-                <Link to='/login' className='signup_btn'>Login</Link>
+                <Link to='/register' className='signup_btn'>Login</Link>
               </li>
             </ul>
             <div className='Rr_Sec_D'>
