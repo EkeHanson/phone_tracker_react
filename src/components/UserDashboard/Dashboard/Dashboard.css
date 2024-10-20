@@ -6,7 +6,7 @@
   align-items: center;
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
-  background-color: #143453; /* Dark background */
+  background-color: #fff; /* Dark background */
   color: #fff; /* White text */
   padding: 40px;
   box-sizing: border-box;
@@ -46,12 +46,18 @@
 .section-container {
   width: 100%;
   max-width: 1200px;
-  background-color: #292929; /* Dark gray */
+  background-color: #F1F6FB; /* Dark gray */
   padding: 30px;
   margin-top: 20px;
   border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(73, 63, 63, 0.3);
-  overflow: auto; /* Scroll within the section if content is too large */
+  color: #000 !important;
+}
+
+.real-time-tracking ul{
+  margin-top: 30px !important;
+}
+.real-time-tracking  ul li{
+  margin-top: 10px !important;
 }
 
 /* Flex container for Advertisement and DeviceRegistration */
@@ -65,10 +71,7 @@
   flex: 1;
 }
 
-/* Ensure that the section container doesn't overflow the page */
-.section-container {
-  max-height: 100%; /* Ensure the section container doesn't exceed the view height */
-}
+
 
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
