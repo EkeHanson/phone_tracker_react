@@ -6,6 +6,8 @@ import FAQ from './components/FAQ/FAQ';
 
 import Dashboard from './components/UserDashboard/Dashboard/Dashboard';
 import ErrorPage from './components/ErrorPage/ErrorPage';
+import ForgotPass from './components/Forgot/ForgotPass';
+import ForgotPassReset from './components/Forgot/ForgotPassReset';
 
 import TrackingPage from './components/UserDashboard/TrackingPage/TrackingPage'
 import HistoryLogPage from './components/UserDashboard/HistoryLogPage/HistoryLogPage'
@@ -26,6 +28,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        
+        <Route path="/forgotten_pass_reset" element={<ForgotPassReset />} />
+        <Route path="/forgotten_pass" element={<ForgotPass />} />
+
         <Route path="/check-tracking-history/:id" element={<HistoryLogPage />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/contact-us" element={<ContactUs />} />

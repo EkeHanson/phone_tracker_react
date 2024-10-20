@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NavBar from '../NavBar/NavBar'; // Import the NavBar component
 import Footer from '../Footer/Footer';
 import './ContactUs.css';    
 
@@ -27,6 +28,7 @@ const ContactUs = () => {
 
   return (
     <div>
+    <NavBar /> {/* Use NavBar here */}
     <div className="contact-us">
       <h1>Contact Us</h1>
       <div className="contact-form">

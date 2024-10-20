@@ -15,6 +15,9 @@ const NavBar = () => {
   const handleContactUsClick = () => {
     navigate('/contact-us');
   };
+  const handleHowItWorksClick = () => {
+    navigate('/');
+  };
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
@@ -37,14 +40,14 @@ const NavBar = () => {
           <a href="#features" onClick={closeMenu} className="nav-link">
             <FaStar className="nav-icon" /> Features
           </a>
-          <a href="#how-it-works" onClick={closeMenu} className="nav-link">
+          <a href="#how-it-works" onClick={handleHowItWorksClick} className="nav-link">
             <FaSearch className="nav-icon" /> How It Works
           </a>
           <a href="#pricing" onClick={closeMenu} className="nav-link">
             <FaDollarSign className="nav-icon" /> Pricing
           </a>
           
-          <a href="#how-it-works" onClick={closeMenu} className="nav-link">
+          <a href="" onClick={handleContactUsClick} className="nav-link">
             <FaPhone className="nav-icon" /> Contact Us
           </a>
           <button className="cta-button" onClick={handleGetStartedClick}>

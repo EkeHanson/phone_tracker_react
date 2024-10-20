@@ -19,6 +19,10 @@ const Registration = () => {
     const [loading, setLoading] = useState(false);
     
     const navigate = useNavigate(); // Get navigate function from react-router-dom
+
+    const handleForgottenPassClick = () => {
+      navigate('/forgotten_pass');
+    };
   
     const handleInputChange = (e) => {
       const { name, value } = e.target;
@@ -155,7 +159,7 @@ const Registration = () => {
         </form>
 
         {isLogin && (
-          <a href="#" className="forgot-password">
+          <a href=""  onClick={handleForgottenPassClick} className="forgot-password">
             Forgot Password?
           </a>
         )}
