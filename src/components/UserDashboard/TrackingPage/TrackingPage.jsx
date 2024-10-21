@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import NavBar from '../../NavBar/NavBar'; // Import the NavBar component
+import Footer from '../../Footer/Footer'; // Import the NavBar component
 import TrackingMap from '../TrackingMap/TrackingMap';
 import DeviceInfo from '../DeviceInfo/DeviceInfo';
 import DeviceActions from '../DeviceActions/DeviceActions';
@@ -29,6 +31,8 @@ const TrackingPage = () => {
   };
 
   return (
+    <div>
+      <NavBar />
     <div className="tracking-page">
       <TrackingMap deviceLocation={device.location} />
 
@@ -40,6 +44,8 @@ const TrackingPage = () => {
       <DeviceInfo device={device} />
 
       <GeoFence onSetBoundary={handleSetBoundary} />
+    </div>
+    <Footer />
     </div>
   );
 };

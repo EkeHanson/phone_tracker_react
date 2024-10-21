@@ -48,27 +48,29 @@ const Footer = () => {
 
         <div className="footer-section contact">
           <h3>Contact Us</h3>
-          <p>Email: support@phonetracker.com</p>
-          <p>Phone: +123 456 7890</p>
+          <p>Email: support@switflook.com</p>
+          <p>Phone: +234 8146955393</p>
         </div>
 
         <div className="footer-section social">
           <h3>Follow Us</h3>
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://web.facebook.com/people/Abraham-Ekene-onwon-Hanson/100029512903980/?mibextid=ZbWKwL"
+             target="_blank" rel="noopener noreferrer">
               <FaFacebookF size={20} />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
               <FaTwitter size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/ekene-onwon-abraham-4370a0228"
+            target="_blank" rel="noopener noreferrer">
               <FaLinkedinIn size={20} />
             </a>
           </div>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 PhoneTracker. All rights reserved.</p>
+        <p>&copy; 2024 switflook. All rights reserved.</p>
       </div>
     </footer>
   );

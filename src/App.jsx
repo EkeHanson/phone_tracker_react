@@ -3,24 +3,18 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Registration from './components/Registration/Registration';
 import ContactUs from './components/ContactUs/ContactUs';
 import FAQ from './components/FAQ/FAQ';
-
 import Dashboard from './components/UserDashboard/Dashboard/Dashboard';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import ForgotPass from './components/Forgot/ForgotPass';
 import ForgotPassReset from './components/Forgot/ForgotPassReset';
-
 import TrackingPage from './components/UserDashboard/TrackingPage/TrackingPage'
 import HistoryLogPage from './components/UserDashboard/HistoryLogPage/HistoryLogPage'
-
-
 import AdminDashboard from './components/AdminDashboard/Dashboard/Dashboard'
 
-import EmergencyContacts from './components/UserDashboard/EmergencyContactsModal/EmergencyContactsModal';
-
-
-import DeviceRegistration from './components/UserDashboard/DeviceRegistration/DeviceRegistration';
-import RegisteredDevices from './components/UserDashboard/RegisteredDevices/RegisteredDevices'
-import RealTimeTrackingOverview  from './components/UserDashboard/RealTimeTrackingOverview/RealTimeTrackingOverview'
+// import EmergencyContacts from './components/UserDashboard/EmergencyContactsModal/EmergencyContactsModal';
+// import DeviceRegistration from './components/UserDashboard/DeviceRegistration/DeviceRegistration';
+// import RegisteredDevices from './components/UserDashboard/RegisteredDevices/RegisteredDevices'
+// import RealTimeTrackingOverview  from './components/UserDashboard/RealTimeTrackingOverview/RealTimeTrackingOverview'
 
 
 function App() {
@@ -28,7 +22,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        
+
         <Route path="/forgotten_pass_reset" element={<ForgotPassReset />} />
         <Route path="/forgotten_pass" element={<ForgotPass />} />
 

@@ -74,3 +74,64 @@
     }
   }
   
+  .device-image {
+    width: 200px;
+    height: auto;
+    margin-top: 5px;
+  }
+  
+  /* Buttons Container */
+.device-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Button Styles */
+.track-btn, .edit-btn, .delete-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.track-btn {
+  background-color: #28a745; /* Green for Track */
+  color: white;
+}
+
+.edit-btn {
+  background-color: #ffc107; /* Yellow for Edit */
+  color: black;
+}
+
+.delete-btn {
+  background-color: #dc3545; /* Red for Delete */
+  color: white;
+}
+
+.track-btn:hover {
+  background-color: #218838;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .device-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .track-btn, .edit-btn, .delete-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
