@@ -85,40 +85,44 @@ const DeviceManagement = () => {
       </div>
 
       {/* Device table */}
-      <table className="device-table">
-        <thead>
-          <tr>
-            <th>Device Name</th>
-            <th>Owner</th>
-            <th>Status</th>
-            <th>Last Location</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredDevices.length > 0 ? (
-            filteredDevices.map((device) => (
-              <tr key={device.id}>
-                <td>{device.name}</td>
-                <td>{device.user.email}</td>
-                <td className={device.status === 'online' ? 'status-online' : 'status-offline'}>
-                  {device.status}
-                </td>
-                <td>{device.lastLocation}</td>
-                <td>
-                  <button className="btn-info">Track</button>
-                  <button className="btn-warning">Lock</button>
-                  <button className="btn-danger" onClick={() => handleDelete(device.id)}>Delete</button>
-                </td>
-              </tr>
-            ))
-          ) : (
+              <table className="device-table">
+          <thead>
             <tr>
-              <td colSpan="5" className="text-center">No devices found</td>
+              <th>Serial No.</th> {/* Add a header for Serial No. */}
+              <th>Device Name</th>
+              <th>Owner</th>
+              <th>Status</th>
+              <th>Last Location</th>
+              <th>Actions</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredDevices.length > 0 ? (
+              filteredDevices.map((device, index) => (
+                <tr key={device.id}>
+                  {/* Calculate serial number */}
+                  <td>{itemsPerPage * (currentPage - 1) + index + 1}</td> {/* Serial No. */}
+                  <td>{device.name}</td>
+                  <td>{device.user.email}</td>
+                  <td className={device.status === 'online' ? 'status-online' : 'status-offline'}>
+                    {device.status}
+                  </td>
+                  <td>{device.lastLocation}</td>
+                  <td>
+                    <button className="btn-info">Track</button>
+                    <button className="btn-warning">Lock</button>
+                    <button className="btn-danger" onClick={() => handleDelete(device.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6" className="text-center">No devices found</td> {/* Update colspan to match new column count */}
+              </tr>
+            )}
+          </tbody>
+        </table>
+
 
       {/* Pagination controls */}
       <div className="pagination-controls">
