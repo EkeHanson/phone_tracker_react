@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import RegisteredDevicesEdit from '../RegisteredDevicesEdit/RegisteredDevicesEdit';
 import './RegisteredDevices.css';
 
 const formatDate = (isoDateString) => {
@@ -20,6 +21,7 @@ const RegisteredDevices = () => {
 
   const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
   const navigate = useNavigate();
+  const [deleteSuccess, setDeleteSuccess] = useState(false); // New state for delete success alert
   const [devices, setDevices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -81,31 +83,39 @@ const RegisteredDevices = () => {
     return <p>Error fetching devices: {error}</p>;
   }
 
-  const handleEditClick = (deviceId) => {
-    navigate(`/edit-device/${deviceId}`);
+  const handleEditClick = (device) => {
+    navigate(`/edit-device/${device.id}`, {
+      state: {
+        id: device.id,
+        name: device.name,
+        image1: device.image1,
+        image2: device.image2,
+        imei1: device.imei1,
+        imei2: device.imei2
+      }
+    });
   };
   
   const handleDeleteClick = (deviceId) => {
     if (window.confirm("Are you sure you want to delete this device?")) {
-      // Implement delete logic here
-      axios.delete(`${djangoHostname}/api/devices/devices/${deviceId}/`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      })
-      .then(() => {
-        // Refresh device list or give feedback
-      })
-      .catch(err => {
-        console.error(err);
-      });
+      axios.delete(`${djangoHostname}/api/devices/devices/${deviceId}/`)
+        .then(() => {
+          // Filter out the deleted device from the device list
+          setDevices(devices.filter(device => device.id !== deviceId));
+          setDeleteSuccess(true); // Show red alert on successful delete
+          setTimeout(() => setDeleteSuccess(false), 3000); // Hide after 3 seconds
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
   };
-
   
   return (
     <div className="registered-devices">
       <h2>Your Devices</h2>
+      {/* Red alert for successful deletion */}
+      {deleteSuccess && <div className="alert alert-danger">Device deleted successfully!</div>}
       <div className="device-list">
         {currentDevices.map((device) => (
           <div className="device-card" key={device.id}>
@@ -131,7 +141,9 @@ const RegisteredDevices = () => {
           {/* Buttons for Track, Edit, and Delete */}
           <div className="device-buttons">
             <button onClick={handleTrackClick} className="track-btn">Track Now</button>
-            <button onClick={() => handleEditClick(device.id)} className="edit-btn">Edit</button>
+
+            <button onClick={() => handleEditClick(device)} className="edit-btn">Edit</button>
+
             <button onClick={() => handleDeleteClick(device.id)} className="delete-btn">Delete</button>
           </div>
         </div>

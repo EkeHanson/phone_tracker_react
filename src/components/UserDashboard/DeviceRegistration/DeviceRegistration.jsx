@@ -1,10 +1,12 @@
 // src/components/DeviceRegistration.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './DeviceRegistration.css'; // Include CSS for styling the dashboard
 
 const DeviceRegistration = () => {
   const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
+  const navigate = useNavigate(); // Initialize navigate
   const [name, setName] = useState('');
   const [imei1, setImei1] = useState('');
   const [imei2, setImei2] = useState('');
@@ -49,6 +51,10 @@ const DeviceRegistration = () => {
       setImei2('');
       setImage1(null);
       setImage2(null);
+
+      setTimeout(() => {
+        navigate('/users-dashboard');
+      }, 3000);
     } catch (err) {
       setError('Error registering device. Please try again.');
     } finally {

@@ -1,124 +1,70 @@
-// import React, { useState, useEffect } from 'react'; 
-// import { FaSearch } from 'react-icons/fa'; // Import search icon
-// import './DeviceManagement.css'; // Optional: Add your styles
-
-// const DeviceManagement = () => {
-//   const [devices, setDevices] = useState([]);
-//   const [filteredDevices, setFilteredDevices] = useState([]);
-//   const [searchQuery, setSearchQuery] = useState('');
-
-//   const devices1 = [
-//     { id: 1, name: 'iPhone 12', type: 'Phone', status: 'online', lastLocation: 'New York' },
-//     { id: 2, name: 'Galaxy S21', type: 'Phone', status: 'offline', lastLocation: 'London' },
-//     { id: 3, name: 'MacBook Pro', type: 'Laptop', status: 'online', lastLocation: 'San Francisco' }
-//   ];
-
-//   useEffect(() => {
-//     // Simulating fetching devices data
-//     setDevices(devices1);
-//     setFilteredDevices(devices1); // Initialize with all devices
-//   }, []);
-
-//   const handleSearch = () => {
-//     if (!searchQuery) {
-//       setFilteredDevices(devices); // If search is empty, show all devices
-//       return;
-//     }
-
-//     const filtered = devices.filter(device =>
-//       device.name.toLowerCase().includes(searchQuery.toLowerCase())
-//     );
-//     setFilteredDevices(filtered); // Show filtered results
-//   };
-
-//   return (
-//     <div className="device-management">
-//       <h2>Device Management</h2>
-      
-//       {/* Search bar */}
-//       <div className="search-bar">
-//         <input
-//           type="text"
-//           placeholder="Search for devices..."
-//           value={searchQuery}
-//           onChange={(e) => setSearchQuery(e.target.value)}
-//         />
-//         <button onClick={handleSearch}>
-//           <FaSearch />
-//         </button>
-//       </div>
-
-//       {/* Device table */}
-//       <table className="device-table">
-//         <thead>
-//           <tr>
-//             <th>Device Name</th>
-//             <th>Type</th>
-//             <th>Status</th>
-//             <th>Last Location</th>
-//             <th>Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {filteredDevices.length > 0 ? (
-//             filteredDevices.map(device => (
-//               <tr key={device.id}>
-//                 <td>{device.name}</td>
-//                 <td>{device.type}</td>
-//                 <td className={device.status === 'online' ? 'status-online' : 'status-offline'}>
-//                   {device.status}
-//                 </td>
-//                 <td>{device.lastLocation}</td>
-//                 <td>
-//                   <button className="btn-info">Track</button>
-//                   <button className="btn-warning">Lock</button>
-//                   <button className="btn-info">Reset</button>
-//                 </td>
-//               </tr>
-//             ))
-//           ) : (
-//             <tr>
-//               <td colSpan="5" className="text-center">No devices found</td>
-//             </tr>
-//           )}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
-
-// export default DeviceManagement;
 import React, { useState, useEffect } from 'react';
-import { FaSearch } from 'react-icons/fa'; // Import search icon
-import './DeviceManagement.css'; // Add your styles
+import { FaSearch } from 'react-icons/fa';
+import './DeviceManagement.css';
+import axios from 'axios'; 
 
 const DeviceManagement = () => {
+  const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
   const [devices, setDevices] = useState([]);
   const [filteredDevices, setFilteredDevices] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-
-  const devices1 = [
-    { id: 1, name: 'iPhone 12', type: 'Phone', status: 'online', lastLocation: 'New York' },
-    { id: 2, name: 'Galaxy S21', type: 'Phone', status: 'offline', lastLocation: 'London' },
-    { id: 3, name: 'MacBook Pro', type: 'Laptop', status: 'online', lastLocation: 'San Francisco' }
-  ];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const itemsPerPage = 5;
 
   useEffect(() => {
-    // Simulating fetching devices data
-    setDevices(devices1);
-    setFilteredDevices(devices1); // Initialize with all devices
-  }, []);
+    fetchDevices(currentPage);
+  }, [currentPage]);
+
+  const fetchDevices = async (page = 1) => {
+    try {
+      const response = await axios.get(`${djangoHostname}/api/admin_dashboard/devices/?page=${page}`);
+      setDevices(response.data.results);
+      setTotalCount(response.data.count);
+      setFilteredDevices(response.data.results); // Set this to the full list of devices
+    } catch (error) {
+      console.error('Error fetching devices:', error);
+    }
+  };
 
   const handleSearch = async () => {
     if (!searchQuery) {
-      setFilteredDevices(devices); // If search is empty, show all devices
+      setCurrentPage(1);
+      fetchDevices(); // Reset to the first page
       return;
     }
 
-    const filtered = devices.filter(device =>
-      device.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredDevices(filtered); // Show filtered results
+    try {
+      const response = await axios.get(`${djangoHostname}/api/admin_dashboard/search-devices/?q=${searchQuery}`);
+      setFilteredDevices(response.data);
+      setTotalCount(response.data.length); // Use the count of filtered devices
+      setCurrentPage(1); // Reset to the first page on search
+    } catch (error) {
+      console.error('Error searching devices:', error.response ? error.response.data : error);
+    }
+  };
+
+  const handleDelete = async (deviceId) => {
+    if (window.confirm('Are you sure you want to delete this device?')) {
+      try {
+        await axios.delete(`${djangoHostname}/api/devices/devices/${deviceId}`);
+        fetchDevices(currentPage); // Refresh the device list after deletion
+      } catch (error) {
+        console.error('Error deleting device:', error);
+      }
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage * itemsPerPage < totalCount) {
+      setCurrentPage(prevPage => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prevPage => prevPage - 1);
+    }
   };
 
   return (
@@ -143,7 +89,7 @@ const DeviceManagement = () => {
         <thead>
           <tr>
             <th>Device Name</th>
-            <th>Type</th>
+            <th>Owner</th>
             <th>Status</th>
             <th>Last Location</th>
             <th>Actions</th>
@@ -151,10 +97,10 @@ const DeviceManagement = () => {
         </thead>
         <tbody>
           {filteredDevices.length > 0 ? (
-            filteredDevices.map(device => (
+            filteredDevices.map((device) => (
               <tr key={device.id}>
                 <td>{device.name}</td>
-                <td>{device.type}</td>
+                <td>{device.user.email}</td>
                 <td className={device.status === 'online' ? 'status-online' : 'status-offline'}>
                   {device.status}
                 </td>
@@ -162,7 +108,7 @@ const DeviceManagement = () => {
                 <td>
                   <button className="btn-info">Track</button>
                   <button className="btn-warning">Lock</button>
-                  <button className="btn-info">De-register</button>
+                  <button className="btn-danger" onClick={() => handleDelete(device.id)}>Delete</button>
                 </td>
               </tr>
             ))
@@ -173,6 +119,13 @@ const DeviceManagement = () => {
           )}
         </tbody>
       </table>
+
+      {/* Pagination controls */}
+      <div className="pagination-controls">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+        <span>Page {currentPage}</span>
+        <button onClick={handleNextPage} disabled={currentPage * itemsPerPage >= totalCount}>Next</button>
+      </div>
     </div>
   );
 };

@@ -28,7 +28,7 @@ const NavigationLinks = () => {
         </Link>
 
         {/* Log Out button with icon */}
-        <Link to="/" className="nav-button">
+        <Link to="/register" className="nav-button">
           <img src={LogOutIcon} alt="Log Out" className="icon" />
         </Link>
 

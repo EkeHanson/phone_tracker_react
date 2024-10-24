@@ -71,9 +71,12 @@ const Registration = () => {
           localStorage.setItem('user_last_name', response.data.last_name);
           localStorage.setItem('user_user_type', response.data.user_type);
           localStorage.setItem('access_token', response.data.access);
-    
-          // Redirect to home page after login
-          navigate('/users-dashboard');
+          
+            if(response.data.user_type === "admin"){
+              navigate('/admin-dashboard');
+            }else{
+            navigate('/users-dashboard');
+            }
         } else {
           // Redirect to login page after successful registration
           setIsLogin(true); // Switch to login form
