@@ -54,8 +54,6 @@ const ForgotPass = () => {
     }
   };
 
-  console.log("token:", token);
-  console.log("uidb64:", uidb64);
 
   return (
     <div className='Reg_SecO'>
