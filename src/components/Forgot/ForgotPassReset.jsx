@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './ForgotPassReset.css';
 import GlobeIcon from '../../assets/globe-icon.svg';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ForgotPass = () => {
   const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
-  const { uid, token } = useParams(); // Extract uid and token from URL
+  const { uidb64, token } = useParams(); // Capture both uidb64 and token
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -15,16 +15,11 @@ const ForgotPass = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    
-   
-
-
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
     setLoading(true);
     setError('');
     setSuccessMessage('');
 
-    // Check if passwords match
     if (newPassword !== confirmPassword) {
       setError('Passwords do not match');
       setLoading(false);
@@ -32,12 +27,12 @@ const ForgotPass = () => {
     }
 
     try {
-      const response = await fetch(`${API_HOST}api/register/reset-password/${uid}/${token}/`, {
+      const response = await fetch(`${djangoHostname}api/register/reset-password/${uidb64}/${token}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({new_password: newPassword }), // Send email and new password
+        body: JSON.stringify({ new_password: newPassword }),
       });
 
       const data = await response.json();
@@ -46,18 +41,21 @@ const ForgotPass = () => {
         throw new Error(data.error || 'Something went wrong');
       }
 
-      setSuccessMessage(data.message); // Display success message
+      setSuccessMessage(data.message);
 
       setTimeout(() => {
         navigate('/login');
       }, 2000);
 
     } catch (err) {
-      setError(err.message); // Capture any errors
+      setError(err.message);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
+
+  console.log("token:", token);
+  console.log("uidb64:", uidb64);
 
   return (
     <div className='Reg_SecO'>
@@ -88,21 +86,12 @@ const ForgotPass = () => {
               <h3>Reset Password</h3>
             </div>
             <form className='Reg_Form' onSubmit={handleSubmit}>
-              {/* <div className='Reg_Input'>
-                <input 
-                  type="text" 
-                  placeholder='Email Address' 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)} // Update email state
-                  required
-                />
-              </div> */}
               <div className='Reg_Input'>
                 <input 
                   type="password" 
                   placeholder='New Password' 
                   value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)} // Update new password state
+                  onChange={(e) => setNewPassword(e.target.value)}
                   required
                 />
               </div>
@@ -111,7 +100,7 @@ const ForgotPass = () => {
                   type="password" 
                   placeholder='Confirm Password' 
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)} // Update confirm password state
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                 />
               </div>

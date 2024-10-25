@@ -88,7 +88,7 @@ const DeviceManagement = () => {
               <table className="device-table">
           <thead>
             <tr>
-              <th>Serial No.</th> {/* Add a header for Serial No. */}
+              <th>S/N</th> {/* Add a header for Serial No. */}
               <th>Device Name</th>
               <th>Owner</th>
               <th>Status</th>

@@ -28,7 +28,7 @@ function App() {
         <Route path="/edit-device/:id" element={<RegisteredDevicesEdit />} />
 
 
-        <Route path="/forgotten_pass_reset" element={<ForgotPassReset />} />
+        <Route path="/forgotten_pass_reset/:uidb64/:token" element={<ForgotPassReset />} />
         <Route path="/forgotten_pass" element={<ForgotPass />} />
 
         <Route path="/check-tracking-history/:id" element={<HistoryLogPage />} />
