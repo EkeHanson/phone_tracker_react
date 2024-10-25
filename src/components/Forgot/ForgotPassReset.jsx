@@ -27,7 +27,7 @@ const ForgotPass = () => {
     }
 
     try {
-      const response = await fetch(`${djangoHostname}api/register/reset-password/${uidb64}/${token}/`, {
+      const response = await fetch(`${djangoHostname}/api/users/reset-password/${uidb64}/${token}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
