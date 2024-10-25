@@ -44,7 +44,7 @@ const ForgotPass = () => {
       setSuccessMessage(data.message);
 
       setTimeout(() => {
-        navigate('/login');
+        navigate('/register');
       }, 2000);
 
     } catch (err) {
