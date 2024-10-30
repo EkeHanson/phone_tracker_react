@@ -14,6 +14,12 @@ const Footer = () => {
    // Function to handle button click
    const handleFAQClick = () => {
     navigate('/faq-us'); // Navigate to /faq-us
+   }
+   const handleFeatureClick = () => {
+    navigate('/'); // Navigate to /faq-us
+  };
+   const handleContactClick = () => {
+    navigate('/contact-us'); // Navigate to /faq-us
   };
 
   return (
@@ -37,9 +43,9 @@ const Footer = () => {
         <div className="footer-section links">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#features"><button onClick={handleFeatureClick} className="footer-link">Features</button></a></li>
+            <li><a href="#pricing"><button onClick={handleFeatureClick} className="footer-link">Pricing</button></a></li>
+            <li><button onClick={handleContactClick} className="footer-link">Contact</button></li>
             <li>
               <button onClick={handleFAQClick} className="footer-link">FAQ</button>
             </li>
