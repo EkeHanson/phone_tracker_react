@@ -18,7 +18,7 @@ const ForgotPass = () => {
     setSuccessMessage('');
 
     try {
-      const response = await fetch(`${djangoHostname}/api/users/password-reset/`, {
+      const response = await fetch(`${djangoHostname}/api/accounts/password-reset/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

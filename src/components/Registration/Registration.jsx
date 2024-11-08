@@ -45,8 +45,8 @@ const Registration = () => {
       }
     
       const url = isLogin
-        ? `${djangoHostname}/api/users/login/`
-        : `${djangoHostname}/api/users/register/`;
+        ? `${djangoHostname}/api/accounts/login/`
+        : `${djangoHostname}/api/accounts/register/`;
     
       const data = isLogin
         ? { email: formData.email, password: formData.password }
