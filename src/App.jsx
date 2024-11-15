@@ -26,7 +26,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/edit-device/:id" element={<RegisteredDevicesEdit />} />
+        <Route path="/edit-device" element={<RegisteredDevicesEdit />} />
 
 
         <Route path="/forgotten_pass_reset/:uidb64/:token" element={<ForgotPassReset />} />

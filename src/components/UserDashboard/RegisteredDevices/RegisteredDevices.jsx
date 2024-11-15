@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import RegisteredDevicesEdit from '../RegisteredDevicesEdit/RegisteredDevicesEdit';
 import './RegisteredDevices.css';
 
 const formatDate = (isoDateString) => {
@@ -17,7 +16,6 @@ const formatDate = (isoDateString) => {
 };
 
 const RegisteredDevices = () => {
- 3;
 
   const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
   const navigate = useNavigate();
@@ -71,10 +69,7 @@ const RegisteredDevices = () => {
     }
   };
 
-  const handleTrackClick = () => {
-    navigate('/users-track');
-  };
-
+  
   if (loading) {
     return <p>Loading devices...</p>;
   }
@@ -83,8 +78,24 @@ const RegisteredDevices = () => {
     return <p>Error fetching devices: {error}</p>;
   }
 
+
+
+  const handleTrackClick = (device) => {
+    navigate(`/users-track`, {
+      state: {
+        id: device.id,
+        name: device.name,
+        image1: device.image1,
+        image2: device.image2,
+        imei1: device.imei1,
+        imei2: device.imei2
+      }
+    });
+  };
+
+
   const handleEditClick = (device) => {
-    navigate(`/edit-device/${device.id}`, {
+    navigate(`/edit-device`, {
       state: {
         id: device.id,
         name: device.name,
@@ -111,6 +122,7 @@ const RegisteredDevices = () => {
     }
   };
   
+  
   return (
     <div className="registered-devices">
       <h2>Your Devices</h2>
@@ -130,17 +142,11 @@ const RegisteredDevices = () => {
               className="device-image" 
             />
           )}
-          {/* {device.image2 && (
-            <img 
-              src={`${djangoHostname}/${device.image2}`}
-              alt={`${device.name} image 2`} 
-              className="device-image" 
-            />
-          )} */}
 
           {/* Buttons for Track, Edit, and Delete */}
           <div className="device-buttons">
-            <button onClick={handleTrackClick} className="track-btn">Track Now</button>
+            {/* <button className="track-btn">Track Now</button> */}
+            <button onClick={() => handleTrackClick(device)} className="track-btn">Track</button>
 
             <button onClick={() => handleEditClick(device)} className="edit-btn">Edit</button>
 

@@ -12,6 +12,10 @@ const RegisteredDevicesEdit = () => {
   const navigate = useNavigate(); // Initialize navigate
   const { id, name, image1, image2, imei1, imei2 } = location.state || {}; // Access state from navigate
 
+
+  // if (id) {
+  //   alert(`Device with ${id} ID not provided`);
+  // }
   
   // State variables for device details
   const [deviceName, setDeviceName] = useState(name || '');
