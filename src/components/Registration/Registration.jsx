@@ -7,6 +7,7 @@ import './Registration.css';
 
 const Registration = () => {
     const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
+    
     const [isLogin, setIsLogin] = useState(true); // Toggle between login and register
     const [formData, setFormData] = useState({
       first_name: '',

@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const DeviceManagement = () => {
   const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
+  
   const [devices, setDevices] = useState([]);
   const [filteredDevices, setFilteredDevices] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
