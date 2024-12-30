@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
+import { FlutterWaveButton } from 'flutterwave-react-v3';
 import './PaymentPage.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -48,8 +48,9 @@ const PaymentPage = () => {
   };
 
   const handleFlutterwavePayment = () => {
-    closePaymentModal();
+    console.log('Flutterwave payment modal closed');
   };
+  
 
   const handlePaystackPayment = () => {
     const handler = window.PaystackPop.setup({

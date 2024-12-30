@@ -19,7 +19,9 @@ const RegisteredDevices = () => {
 
   const djangoHostname = import.meta.env.VITE_DJANGO_HOSTNAME;
   const navigate = useNavigate();
+  const [generatedLink, setGeneratedLink] = useState(null); // State to hold the generated link
   const [deleteSuccess, setDeleteSuccess] = useState(false); // New state for delete success alert
+  const [loadingButtonId, setLoadingButtonId] = useState(null); // Tracks the button loading state
   const [devices, setDevices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -82,6 +84,7 @@ const RegisteredDevices = () => {
 
   const handleTrackClick = (device) => {
     navigate(`/users-track`, {
+
       state: {
         id: device.id,
         name: device.name,
@@ -90,6 +93,7 @@ const RegisteredDevices = () => {
         imei1: device.imei1,
         imei2: device.imei2
       }
+
     });
   };
 
@@ -122,8 +126,39 @@ const RegisteredDevices = () => {
     }
   };
   
-  
+
+  const handleGenerateLink = async (deviceId) => {
+    setLoadingButtonId(deviceId); // Set loading state for the specific button
+    try {
+      const accessToken = localStorage.getItem('access_token');
+      if (!accessToken) {
+        throw new Error('No access token found.');
+      }
+
+      const response = await axios.post(
+        `${djangoHostname}/api/devices/api/generate-link/`,
+        { device_id: deviceId, email: localStorage.getItem('user_email') },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      setGeneratedLink(response.data.link);
+      alert(`Link generated: ${response.data.link}`);
+    } catch (err) {
+      console.error('Error generating link:', err.message);
+      alert('Failed to generate link. Please try again.');
+    } finally {
+      setLoadingButtonId(null); // Reset loading state
+    }
+  };
+
+
+
   return (
+    
     <div className="registered-devices">
       <h2>Your Devices</h2>
       {/* Red alert for successful deletion */}
@@ -148,9 +183,21 @@ const RegisteredDevices = () => {
             {/* <button className="track-btn">Track Now</button> */}
             <button onClick={() => handleTrackClick(device)} className="track-btn">Track</button>
 
-            <button onClick={() => handleEditClick(device)} className="edit-btn">Edit</button>
+            {/* <button onClick={() => handleEditClick(device)} className="edit-btn">Edit</button> */}
 
-            <button onClick={() => handleDeleteClick(device.id)} className="delete-btn">Delete</button>
+            {/* <button onClick={() => handleDeleteClick(device.id)} className="delete-btn">Delete</button> */}
+
+            <button onClick={() => handleDeleteClick(device.id)} className="edit-btn">Email</button>
+
+
+            <button onClick={() => handleGenerateLink(device.id)} className="edit-btn" disabled={loadingButtonId === device.id}>
+              {loadingButtonId === device.id ? 'Sending...' : 'Send Link'}
+            </button>
+
+            {/* <button onClick={() => handleGenerateLink(device.id)} className="generate-link-btn">
+                Generate Link
+            </button> */}
+
           </div>
         </div>
 
