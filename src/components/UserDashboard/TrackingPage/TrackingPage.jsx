@@ -24,11 +24,16 @@ const TrackingPage = () => {
   useEffect(() => {
     const fetchDeviceData = async () => {
       try {
-        const response = await fetch(`${djangoHostname}/api/devices/devices/${id}`);
+        const response = await fetch(`${djangoHostname}/api/devices/api/trackable-link-status/${id}`);
+        // const response = await fetch(`${djangoHostname}/api/devices/devices/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch device data");
         }
         const data = await response.json();
+
+        // console.log("data")
+        // console.log(data)
+        // console.log("data")
   
         // Set default values for missing latitude and longitude
         const latitude = data.latitude ?? 4.8396;

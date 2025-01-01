@@ -17,15 +17,22 @@ const DeviceInfo = ({ device }) => {
     });
   };
 
+       console.log("device data")
+        console.log(device)
+        console.log("device data")
+
   return (
     <div className="device-info">
       <h3 className="device-title">Device Information</h3>
       <div className="device-grid">
         <div className="device-item">
-          <strong>Name:</strong> {device?.name || "N/A"}
+          <strong>Name:</strong> {device?.device_name || "N/A"}
         </div>
         <div className="device-item">
-          <strong>Unique ID:</strong> {device?.device_id || "N/A"}
+          <strong>Browser:</strong> {device?.browser || "N/A"}
+        </div>
+        <div className="device-item">
+          <strong>Device Type:</strong> {device?.device_type || "N/A"}
         </div>
         <div className="device-item">
           <strong>Street:</strong> {device?.street || "N/A"}, {device?.buildingNumber || "N/A"}
@@ -33,17 +40,17 @@ const DeviceInfo = ({ device }) => {
         <div className="device-item">
           <strong>City:</strong> {device?.city || "N/A"}
         </div>
-        <div className="device-item">
+        {/* <div className="device-item">
           <strong>State:</strong> {device?.state || "N/A"}
-        </div>
+        </div> */}
         <div className="device-item">
           <strong>Postal Code:</strong> {device?.postal_code || "N/A"}
         </div>
         <div className="device-item">
-          <strong>Latitude:</strong> {device?.latitude || "N/A"}
+          <strong>Latitude:</strong> {device?.geolocation?.lat ||  "N/A"}
         </div>
         <div className="device-item">
-          <strong>Longitude:</strong> {device?.longitude || "N/A"}
+          <strong>Longitude:</strong> {device?.geolocation?.lon || "N/A"}
         </div>
         <div className="device-item">
           <strong>Nearby Landmark:</strong> {device?.nearby_landmark || "N/A"}
