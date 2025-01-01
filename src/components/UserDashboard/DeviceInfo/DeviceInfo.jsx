@@ -13,6 +13,7 @@ const DeviceInfo = ({ device }) => {
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
+      second: '2-digit',
       hour12: true,
     });
   };
@@ -76,10 +77,10 @@ const DeviceInfo = ({ device }) => {
           <strong>Battery Level:</strong> {device?.battery_level != null ? `${device.battery_level}%` : "N/A"}
         </div>
         <div className="device-item">
-          <strong>Wi-Fi:</strong> {device?.connected_wifi || "N/A"}
+          <strong>Wi-Fi:</strong> {device?.geolocation?.org || device?.connected_wifi || "N/A"}
         </div>
         <div className="device-item">
-          <strong>Last Online:</strong> {formatDate(device?.last_online)}
+          <strong>Last Online:</strong> {formatDate(device?.clicked_at)}
         </div>
       </div>
     </div>
