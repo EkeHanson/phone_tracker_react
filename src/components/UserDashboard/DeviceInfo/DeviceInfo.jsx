@@ -34,9 +34,15 @@ const DeviceInfo = ({ device }) => {
         <div className="device-item">
           <strong>Device Type:</strong> {device?.device_type || "N/A"}
         </div>
+
+        <div className="device-item">
+          <strong>Ip Address:</strong> {device?.ip_address || "N/A"}
+        </div>
+
         <div className="device-item">
           <strong>Street:</strong> {device?.street || "N/A"}, {device?.buildingNumber || "N/A"}
         </div>
+        
         <div className="device-item">
           <strong>City:</strong> {device?.city || "N/A"}
         </div>
@@ -55,9 +61,9 @@ const DeviceInfo = ({ device }) => {
         <div className="device-item">
           <strong>Nearby Landmark:</strong> {device?.nearby_landmark || "N/A"}
         </div>
-        <div className="device-item">
+        {/* <div className="device-item">
           <strong>Location Accuracy:</strong> {device?.location_accuracy || "N/A"}
-        </div>
+        </div> */}
         <div className="device-item">
           <strong>Altitude:</strong> {device?.altitude || "N/A"}
         </div>
