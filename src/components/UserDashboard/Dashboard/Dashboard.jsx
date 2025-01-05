@@ -25,7 +25,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       {/* Navigation */}
       
-      <NavigationLinks />
+      {/* <NavigationLinks /> */}
 
       {/* Action Buttons */}
       <div className="dashboard-actions">
