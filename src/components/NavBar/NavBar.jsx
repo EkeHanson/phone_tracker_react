@@ -91,6 +91,7 @@ const NavBar = () => {
 
           <div className="nav-icons">
             <FaUserCircle className="nav-icon" title="Account" onClick={handleAccountClick} />
+            
             <FaQuestionCircle className="nav-icon" title="Help" onClick={() => navigate('/faq-us')} />
           </div>
 
